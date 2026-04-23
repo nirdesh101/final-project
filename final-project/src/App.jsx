@@ -1,14 +1,18 @@
-import Header from './components/Header'
-import Hero from './components/Hero'
-import Footer from './components/Footer'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import './App.css'
+import SiteLayout from './components/SiteLayout'
+import FormPage from './pages/FormPage'
+import HomePage from './pages/HomePage'
 
 function App() {
   return (
-    <>
-      <Header />
-      <Hero />
-      <Footer />
-    </>
+    <Routes>
+      <Route element={<SiteLayout />}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/form" element={<FormPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Route>
+    </Routes>
   )
 }
 
